@@ -335,6 +335,77 @@ int WriteReport()
     return 0;
 }
 
+
+
+ int SearchProduct( Product_t *products, int num_products)
+{
+    char id[10];
+    printf("Enter product ID to search: ");
+    scanf("%9s", id);
+    printf("----------------------\n");
+    // Search for the product
+    int index = -1;
+    for (int i = 0; i < num_products; i++)
+    {
+        if (strcmp(products[i].id, id) == 0)
+        {
+            index = i;
+            break;
+        }
+    }
+
+    if (index == -1)
+    {
+        printf("Product ID not found in inventory.\n");
+        return -1;
+    }
+
+    printf("Product found:\n");
+    printProduct(products[index]);
+    printf("----------------------\n");
+
+    int choice;
+    printf("Select attribute to modify:\n");
+    printf("1. Name\n2. Quantity\n3. Price\nChoice: ");
+    scanf("%d", &choice);
+
+    switch (choice)
+    {
+    case 1: // Modify name
+        printf("Enter new name: ");
+        scanf("%49s", products[index].name);
+        break;
+
+    case 2: // Modify quantity
+        printf("Enter new quantity: ");
+        scanf("%d", &products[index].quantity);
+        if (products[index].quantity < 0)
+        {
+            printf("Invalid input: Negative quantity is not allowed.\n");
+            return -1;
+        }
+        break;
+
+    case 3: // Modify price
+        printf("Enter new price: ");
+        scanf("%lf", &products[index].price);
+        if (products[index].price < 0.0)
+        {
+            printf("Invalid input: Negative price is not allowed.\n");
+            return -1;
+        }
+        break;
+
+    default:
+        printf("Invalid choice.\n");
+        return -1;
+    }
+
+    printf("Product modified successfully.\n");
+    return 0;
+}
+
+
 /**
  * This function prints the transaction menu and enable the interactions with it.
  * @result Nothing.
@@ -393,6 +464,7 @@ void InventoryMenu()
         case 1:
             printProductList(products, num_products);
         case 2:
+            SearchProduct(products, num_products);
             break;
         case 9:
             break;
