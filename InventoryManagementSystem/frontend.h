@@ -116,6 +116,7 @@ ProductList loadProductList() {
 
     while (fscanf(file, "%s\n", id) != EOF) {
         fscanf(file, "%s\n", name);
+        float price;
         fscanf(file, "%lf\n", &price);
         fscanf(file, "%d\n", &quantity);
 
