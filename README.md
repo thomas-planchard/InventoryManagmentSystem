@@ -1,11 +1,13 @@
+# Inventory Managament System
+
 
 | Name | Role |
 |----|----|
-| Malo | 2 |
-| Aurélien | 4 |
-| Quentin | 6 |
-| Thomas | 2 |
-| Mathis | 4 |
+| Malo | Frontend |
+| Aurélien | Backend |
+| Quentin | Frontend |
+| Thomas | Frontend |
+| Mathis | Backend |
 
 ## Rules of the project
 
@@ -27,7 +29,7 @@ Create appropriate utility functions for the frontend
 
 ### Frontend Overview
 
-Develop a basic Inventory Management system. Each product is represented by a record containing information such as 
+Develop a basic Inventory Management System. Each product is represented by a record containing information such as 
 - product id 
 - name 
 - quantity 
