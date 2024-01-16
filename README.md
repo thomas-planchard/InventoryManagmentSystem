@@ -55,3 +55,30 @@ Records operations should include :
 
 ## Backend functions
 
+### File management system
+
+#### Create a file
+
+```c
+int createFile(char *fileName);
+```
+
+#### Delete a file
+
+```c
+int deleteFile(char *fileName);
+```
+
+#### List files in a directory
+
+```c
+int listFiles(char *directoryName);
+```
+
+#### Search for files based on criteria
+
+```c
+int searchFiles(char *directoryName, char *criteria);
+```
+
+
