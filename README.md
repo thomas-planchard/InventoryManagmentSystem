@@ -34,6 +34,7 @@ Develop a basic Inventory Management System. Each product is represented by a re
 - name 
 - quantity 
 - price 
+
 The users of your frontend should be able to:
 - read and write report (text files)
 
