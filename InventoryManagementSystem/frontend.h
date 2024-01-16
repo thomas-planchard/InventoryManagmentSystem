@@ -83,7 +83,7 @@ int searchProduct(ProductList productList, char *data) {
 }
 
 void saveProductList(ProductList productList) {
-    FILE *file = fopen("../employees.txt", "w");
+    FILE *file = fopen("./product.txt", "w");
     if (file == NULL) {
         printf("Error opening file!\n");
         exit(1);
@@ -103,7 +103,7 @@ ProductList loadProductList() {
     ProductList productList;
     productList.count = 0;
 
-    FILE *file = fopen("../products.txt", "r");
+    FILE *file = fopen("./products.txt", "r");
     if (file == NULL) {
         printf("Error opening file!\n");
         exit(1);
