@@ -5,7 +5,7 @@
 
 #define MAX_NAME 50
 #define MAX_QUANTITY 65535
-#define MAX_EMPLOYEES 65535
+#define MAX_PRODUCT 65535
 
 typedef struct {
     char id[10];
@@ -15,7 +15,7 @@ typedef struct {
 } Product;
 
 typedef struct {
-    Product products[MAX_QUANTITY];
+    Product products[MAX_PRODUCT];
     int count;
 } ProductList;
 
