@@ -9,17 +9,19 @@ int main() {
         #else
                 system("clear");
         #endif
-        printf(" _____ _____ _____ _____ _____\n");
-        printf("|   __|   __|  _  |_   _|   __|\n");
-        printf("|   __|__   |     | | | |__   |\n");
-        printf("|_____|_____|__|__| |_| |_____|\n\n\n\n");
-        printf("\n\t **** Welcome to Contact Management System ****");
+        printf(".___________.__    __   _______    .______    _______     _______.___________.     _______ .______       ______    __    __  .______   \n");   
+        printf("|           |  |  |  | |   ____|   |   _  \  |   ____|   /       |           |    /  _____||   _  \     /  __  \  |  |  |  | |   _  \ \n");   
+        printf("`---|  |----|  |__|  | |  |__      |  |_)  | |  |__     |   (----`---|  |----`   |  |  __  |  |_)  |   |  |  |  | |  |  |  | |  |_)  | \n");  
+        printf("    |  |    |   __   | |   __|     |   _  <  |   __|       \   \       |  |        |  | |_ | |      /   |  |  |  | |  |  |  | |   ___/  \n"); 
+        printf("    |  |    |  |  |  | |  |____    |  |_)  | |  |____.----)   |      |  |        |  |__| | |  |\  \----|  `--'  | |  `--'  | |  |  \n"); 
+        printf("    |__|    |__|  |__| |_______|   |______/  |_______|_______/       |__|         \______| | _| `._____|\______/   \______/  | _|   \n\n\n\n");
+        printf("\n\t **** Welcome to Inventory Management System ****");
         printf("\n\n\n\t\t\tMAIN MENU");
         printf("\n\t\t=====================");
         printf("\n\t\t[1] Add a new Product");
-        printf("\n\t\t[2] Remove an product");
-        printf("\n\t\t[3] Edit an product");
-        printf("\n\t\t[4] Search an product");
+        printf("\n\t\t[2] Remove a product");
+        printf("\n\t\t[3] Edit a product");
+        printf("\n\t\t[4] Search a product");
         printf("\n\t\t[5] Print all product");
         printf("\n\t\t[6] Exit");
         printf("\n\t\t=================\n\t\t");
