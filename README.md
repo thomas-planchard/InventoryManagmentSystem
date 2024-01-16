@@ -48,7 +48,7 @@ Records operations should include :
 
 ## Frontend functions
 
-
+sdflmkjsdlkf
 
 
 
@@ -80,5 +80,9 @@ int listFiles(char *directoryName);
 ```c
 int searchFiles(char *directoryName, char *criteria);
 ```
+
+#### Add report
+
+
 
 
