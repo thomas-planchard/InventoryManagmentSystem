@@ -56,8 +56,6 @@ int LoadDatabase(Product_t *products, int *num_products)
 
 // SAVE DATABASE ==============================
 
-// path/filename: inventory_management_system.c
-
 /**
  * This function saves a bin file named database.
  * @param products (product_t): this is a product.
@@ -86,8 +84,6 @@ int SaveDatabase(const Product_t *products, int num_products)
 }
 
 // ADD PRODUCT ===============================================
-
-// path/filename: inventory_management_system.c
 
 // Assuming the existence of the following global variables
 Product_t products[MAX_PRODUCTS];
@@ -155,7 +151,6 @@ int AddProduct()
 
 // REMOVE PRODUCT ====================================================
 
-// path/filename: inventory_management_system.c
 /**
  * This function removes a product from the the database.
  * @result return 0 if sucess, -1 if failure.
@@ -208,7 +203,7 @@ int RemoveProduct()
 }
 
 // MODIFY ITEM ====================================================
-// path/filename: inventory_management_system.c
+
 /**
  * This function modify a product from the the database.
  * @result return 0 if sucess, -1 if failure.
@@ -308,7 +303,6 @@ int WriteReport()
 
 //
 
-// path/filename: inventory_management_system.c
 /**
  * This function prints the transaction menu and enable the interactions with it.
  * @result Nothing.
