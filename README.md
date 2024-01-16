@@ -48,10 +48,6 @@ Records operations should include :
 
 ## Frontend functions
 
-sdflmkjsdlkf test
-
-
-
 
 ## Backend functions
 
@@ -90,5 +86,39 @@ int searchFiles(char *directoryName, char *criteria);
 #### Add report
 
 
+Make a CLI Inventory management system coded in C that will work as follows:
 
+The program MUST access a directory containing a database.bin file which it will load as the inventory and use as persistent storage. 
+the program MUST also be able to read/write txt files for writing and generating reports.
 
+the databse must be populated with 10 products following this struct.
+
+typedef struct {
+	char id[10];
+	char name[50];
+	int quantity;
+	double price;
+} Product_t
+
+- Launch the program:
+	- Press 1 for: Make a transaction (add or remove or modify an item)
+		- Press 1 for: for: Add a product (receive stocks)
+			- Database must be loaded => product is selected by its ID by the user => select quantity to increase stock => confirmation message => back to "Make a transaction" menu.
+		- Press 2 for: Remove a product (sell stuff)
+			- Dabase must be loaded => product is selected by its ID by the user => select quantity to decrease stock => confirmation message => back to "Make a transaction" menu.
+		- Press 3 for: Modify (change price, or name or etc.)
+			- Database must be loaded => product is selected by its ID by the user => select attribute to modify => change attribute value
+		- Press 9 for: Back()
+	- Press 2 for: Inventory
+		- Press 1 for: Display the whole inventory
+			- Database must be loaded => list all the the 10 items that populate the database
+			- Press 9 for: Back()
+		- Press 2 for: Search an item given its ID and display a detailed view
+		- Press 9 for: Back()
+	- Press 3 for: Reports
+		- Press 1 for: List Reports
+			- Press 1 for: List all reports 
+			- Press 9 for: Back()
+		- Press 2 for: Write a new report
+		- Press 9 for: Back()
+	- Press 9 for: Exit()
