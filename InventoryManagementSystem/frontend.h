@@ -4,8 +4,8 @@
 #include <stdbool.h>
 
 #define MAX_NAME 50
-#define MAX_QUANTITY 999
-#define MAX_PRODUCT 100
+#define MAX_QUANTITY 65535
+#define MAX_EMPLOYEES 65535
 
 typedef struct {
     char id[10];
@@ -15,7 +15,7 @@ typedef struct {
 } Product;
 
 typedef struct {
-    Product products[MAX_PRODUCT];
+    Product products[MAX_QUANTITY];
     int count;
 } ProductList;
 
@@ -116,7 +116,7 @@ ProductList loadProductList() {
 
     while (fscanf(file, "%s\n", id) != EOF) {
         fscanf(file, "%s\n", name);
-        fscanf(file, "%f\n", &price);
+        fscanf(file, "%lf\n", &price);
         fscanf(file, "%d\n", &quantity);
 
         Product product;
