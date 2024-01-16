@@ -16,11 +16,11 @@ int main() {
         printf("\n\t **** Welcome to Contact Management System ****");
         printf("\n\n\n\t\t\tMAIN MENU");
         printf("\n\t\t=====================");
-        printf("\n\t\t[1] Add a new Employee");
-        printf("\n\t\t[2] Remove an employee");
-        printf("\n\t\t[3] Edit an employee");
-        printf("\n\t\t[4] Search an employee");
-        printf("\n\t\t[5] Print all employees");
+        printf("\n\t\t[1] Add a new Product");
+        printf("\n\t\t[2] Remove an product");
+        printf("\n\t\t[3] Edit an product");
+        printf("\n\t\t[4] Search an product");
+        printf("\n\t\t[5] Print all product");
         printf("\n\t\t[6] Exit");
         printf("\n\t\t=================\n\t\t");
 
@@ -111,7 +111,7 @@ int main() {
             #else
                         system("clear");
             #endif
-            printf("\n\n\n\t\t\tEmployee Search");
+            printf("\n\n\n\t\t\t Product Search");
             printf("\n\t\t===============================\n");
             printf("\t\tEnter any user information \n\t\t(Role, Phone number, etc.) : ");
             char data[MAX_QUANTITY];
@@ -119,7 +119,7 @@ int main() {
 
             int index = searchProduct(productList, data);
             if (index == -1) {
-                printf("Employee not found!\n");
+                printf("Product not found!\n");
             } else {
                 printProduct(productList.products[index]);
             }
