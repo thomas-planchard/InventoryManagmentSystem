@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <dirent.h>  
 
 typedef struct
 {
@@ -17,6 +18,20 @@ typedef struct
 
 Product_t products[MAX_PRODUCTS];
 int num_products = 0;
+
+void printProduct(Product_t product) {
+    printf("ID : %s\n", product.id);
+    printf("Name: %s\n", product.name);
+    printf("Price: %f\n",product.price);
+    printf("Quantity: %d\n",product.quantity);
+}
+
+void printProductList(Product_t products[MAX_PRODUCTS], int num_products) {
+    for (int i = 0; i < num_products; ++i) {
+        printf("Product %d:\n", i + 1);
+        printProduct(products[i]);
+    }
+}
 
 /**
  * This function loads the database into the memory.
@@ -85,7 +100,6 @@ int SaveDatabase(const Product_t *products, int num_products)
 
 // ADD PRODUCT ===============================================
 
-// Assuming the existence of the following global variables
 Product_t products[MAX_PRODUCTS];
 int num_products;
 
@@ -199,7 +213,7 @@ int RemoveProduct()
         return -1;
     }
 
-    return 0; // Success
+    return 0;
 }
 
 // MODIFY ITEM ====================================================
@@ -269,8 +283,28 @@ int ModifyProduct()
     }
 
     printf("Product modified successfully.\n");
-    return 0; // Success
+    return 0;
 }
+
+int ListReports() {
+    const char *directory = ".";  // Assuming reports are in the current directory
+    DIR *dir = opendir(directory);
+    if (!dir) {
+        perror("Unable to open directory");
+        return -1;
+    }
+    struct dirent *entry;
+    printf("Available Reports:\n");
+    while ((entry = readdir(dir)) != NULL) {
+        // Check if the file is a report (e.g., .txt extension)
+        if (strstr(entry->d_name, ".txt")) {
+            printf("%s\n", entry->d_name);
+        }
+    }
+    closedir(dir);
+    return 0;  // Success
+}
+
 // WRITE REPORT =====================================================
 
 int WriteReport()
@@ -298,10 +332,8 @@ int WriteReport()
 
     fclose(file);
     printf("Report '%s' saved successfully.\n", report_name);
-    return 0; // Success
+    return 0;
 }
-
-//
 
 /**
  * This function prints the transaction menu and enable the interactions with it.
@@ -354,11 +386,14 @@ void InventoryMenu()
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
-        // Placeholder for inventory functions
-        // TODO: Implement DisplayInventory and SearchProduct
+        // TODO: Implement SearchProduct
 
         switch (choice)
         {
+        case 1:
+            printProductList(products, num_products);
+        case 2:
+            break;
         case 9:
             break;
         default:
@@ -382,11 +417,16 @@ void ReportsMenu()
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
-        // Placeholder for reports functions
-        // TODO: Implement ListReports and WriteReport
+        // TODO: Implement  WriteReport
 
         switch (choice)
         {
+        case 1:
+            ListReports();
+            break;
+        case 2:
+            WriteReport();
+            break;
         case 9:
             break;
         default:
