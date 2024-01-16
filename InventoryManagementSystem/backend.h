@@ -8,10 +8,16 @@ typedef struct product
     char name[50];
     int quantity;
     int price;
-}product_t;
+} product_t;
 
-
-int CreateFile(char *filename, product_t products[],int length)
+/**
+ * This function creates a file with every products specified in an array of products
+ * @param filename (char pointer): the name of the txt file.
+ * @param products (product_t array): the array of products.
+ * @param length (int): the length of the array.
+ * @result (int) It returns 0 if the writting is successful and 1 if it fails.
+*/
+int CreateFile(char *filename, product_t products[], int length)
 {
     // Check if the file is a .txt or not
     char *ext = strrchr(filename, '.');
@@ -21,14 +27,13 @@ int CreateFile(char *filename, product_t products[],int length)
     }
 
     FILE *file = fopen(filename, "w");
-    
-    for(int count=0;count<length;count++){
-        fprintf(file,"Product n°:%s\n",products[count].id);
-        fprintf(file,"Name :%s\n",products[count].name);
-        fprintf(file,"Price:%d\n",products[count].quantity);
-        fprintf(file,"Product n°:%d\n\n",products[count].price); 
+
+    for (int count = 0; count < length; count++)
+    {
+        fprintf(file, "Product n°:%s\n", products[count].id);
+        fprintf(file, "Name :%s\n", products[count].name);
+        fprintf(file, "Price:%d\n", products[count].quantity);
+        fprintf(file, "Product n°:%d\n\n", products[count].price);
     }
-
-
     fclose(file);
 }
