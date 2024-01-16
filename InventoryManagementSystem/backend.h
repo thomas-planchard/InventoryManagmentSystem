@@ -15,7 +15,7 @@ typedef struct product
  * @param filename (char pointer): the name of the txt file.
  * @param products (product_t array): the array of products.
  * @param length (int): the length of the array.
- * @result (int) It returns 0 if the writting is successful and 1 if it fails.
+ * @result It returns 0 if the writting is successful and 1 if it fails.
 */
 int CreateFile(char *filename, product_t products[], int length)
 {
