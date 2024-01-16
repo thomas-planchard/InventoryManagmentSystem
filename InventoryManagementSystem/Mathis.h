@@ -67,7 +67,7 @@ int SaveDatabase(const Product_t *products, int num_products) {
 // ADD PRODUCT ===============================================
 Product_t products[MAX_PRODUCTS];
 int num_products;
-
+/*
 void printProduct(Product product) {
     printf("ID : %s\n", product.id);
     printf("Name: %s\n", product.name);
@@ -81,6 +81,7 @@ void printProductList(ProductList productList) {
         printProduct(productList.products[i]);
     }
 }
+*/
 
 int AddProduct() {
     char id[10];
@@ -339,6 +340,7 @@ void ReportsMenu()
         switch (choice) {
             case 2:
                 WriteReport();
+                break;
             case 9:
                 break;
             default:
