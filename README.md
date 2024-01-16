@@ -1,4 +1,4 @@
-# Inventory Managament System
+# Inventory Management System
 
 
 | Name | Role |
@@ -56,6 +56,12 @@ sdflmkjsdlkf test
 ## Backend functions
 
 ### File management system
+
+#### Write in a file
+
+```c
+int writeFile(char *fileName, char *content);
+```
 
 #### Create a file
 
