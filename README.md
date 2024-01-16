@@ -1,4 +1,4 @@
-# Inventory Managament System
+# Inventory Management System
 
 
 | Name | Role |
@@ -49,9 +49,59 @@ Records operations should include :
 ## Frontend functions
 
 
-
-
-
-
 ## Backend functions
 
+### File management system
+
+#### Write in a file
+
+```c
+int writeFile(char *fileName, char *content);
+```
+
+#### Create a file
+
+```c
+int createFile(char *fileName);
+```
+
+#### Delete a file
+
+```c
+int deleteFile(char *fileName);
+```
+
+#### List files in a directory
+
+```c
+int listFiles(char *directoryName);
+```
+
+#### Search for files based on criteria
+
+```c
+int searchFiles(char *directoryName, char *criteria);
+```
+
+#### Add report
+
+
+
+
+- Launch the program:
+	- Press 1 for: Make a transaction (add or remove or modify an item)
+		- Press 1 for: for: Add a product (receive stocks)
+		- Press 2 for: Remove a product (sell stuff)
+		- Press 3 for: Modify (change price, or name or etc.)
+		- Press 9 for: Back()
+	- Press 2 for: Inventory
+		- Press 1 for: Display the whole inventory
+		- Press 2 for: Search an item given a criterion
+		- Press 9 for: Back()
+	- Press 3 for: Reports
+		- Press 1 for: List Reports
+			- Press 1 for: Select Report
+			- Press 9 for: Back()
+		- Press 2 for: Write a new report
+		- Press 9 for: Back()
+	- Press 9 for: Exit()
