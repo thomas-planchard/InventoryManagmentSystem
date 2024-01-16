@@ -45,8 +45,6 @@ int LoadDatabase(Product_t *products, int *num_products) {
 
 // SAVE DATABASE ==============================
 
-// path/filename: inventory_management_system.c
-
 int SaveDatabase(const Product_t *products, int num_products) {
     FILE *file = fopen(DB_FILE, "wb");
     if (!file) {
@@ -67,10 +65,6 @@ int SaveDatabase(const Product_t *products, int num_products) {
 
 
 // ADD PRODUCT ===============================================
-
-// path/filename: inventory_management_system.c
-
-// Assuming the existence of the following global variables
 Product_t products[MAX_PRODUCTS];
 int num_products;
 
@@ -126,8 +120,6 @@ int AddProduct() {
 
 // REMOVE PRODUCT ====================================================
 
-// path/filename: inventory_management_system.c
-
 int RemoveProduct() {
     char id[10];
     printf("Enter product ID to remove from stock: ");
@@ -168,7 +160,6 @@ int RemoveProduct() {
 }
 
 // MODIFY ITEM ====================================================
-// path/filename: inventory_management_system.c
 
 int ModifyProduct() {
     char id[10];
@@ -227,119 +218,153 @@ int ModifyProduct() {
     return 0;  // Success
 }
 
-//
+// WRITE REPORT =====================================================
 
-// path/filename: inventory_management_system.c
+int WriteReport() {
+    char report_name[100];
+    printf("Enter report name: ");
+    scanf("%99s", report_name);
+
+    char report_content[1024];
+    printf("Enter report content (max 1024 characters): ");
+    scanf("%1023s", report_content);
+
+    char report_file_name[120];
+    snprintf(report_file_name, sizeof(report_file_name), "%s.txt", report_name);
+
+    FILE *file = fopen(report_file_name, "w");
+    if (!file) {
+        perror("Error opening report file for writing");
+        return -1;
+    }
+
+    fprintf(file, "Report Name: %s\n\n", report_name);
+    fprintf(file, "Content:\n%s\n", report_content);
+
+    fclose(file);
+    printf("Report '%s' saved successfully.\n", report_name);
+    return 0;  // Success
+}
+
+
+// DISPLAY TRANSACTION MENU =================================
 
 void TransactionMenu() 
+{
+    int choice;
+    do 
     {
-        int choice;
-        do 
+        printf("\n--- Transaction Menu ---\n");
+        printf("1. Add a product\n");
+        printf("2. Remove a product\n");
+        printf("3. Modify a product\n");
+        printf("9. Back\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) 
         {
-            printf("\n--- Transaction Menu ---\n");
-            printf("1. Add a product\n");
-            printf("2. Remove a product\n");
-            printf("3. Modify a product\n");
-            printf("9. Back\n");
-            printf("Enter your choice: ");
-            scanf("%d", &choice);
+            case 1:
+                AddProduct();
+                break;
+            case 2:
+                RemoveProduct();
+                break;
+            case 3:
+                ModifyProduct();
+                break;
+            case 9:
+                break;
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    } while (choice != 9);
+}
 
-            switch (choice) 
-            {
-                case 1:
-                    AddProduct();
-                    break;
-                case 2:
-                    RemoveProduct();
-                    break;
-                case 3:
-                    ModifyProduct();
-                    break;
-                case 9:
-                    break;
-                default:
-                    printf("Invalid choice. Please try again.\n");
-            }
-        } while (choice != 9);
-    }
+// DISPLAY INVENTORY MENU ==============================
 
-    void InventoryMenu() {
-        int choice;
-        do {
-            printf("\n--- Inventory Menu ---\n");
-            printf("1. Display the whole inventory\n");
-            printf("2. Search an item\n");
-            printf("9. Back\n");
-            printf("Enter your choice: ");
-            scanf("%d", &choice);
+void InventoryMenu() {
+    int choice;
+    do {
+        printf("\n--- Inventory Menu ---\n");
+        printf("1. Display the whole inventory\n");
+        printf("2. Search an item\n");
+        printf("9. Back\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
 
-            // Placeholder for inventory functions
-            // TODO: Implement DisplayInventory and SearchProduct
+        // Placeholder for inventory functions
+        // TODO: Implement DisplayInventory and SearchProduct
 
-            switch (choice) {
-                case 9:
-                    break;
-                default:
-                    printf("Invalid choice. Please try again.\n");
-            }
-        } while (choice != 9);
-    }
+        switch (choice) {
+            case 9:
+                break;
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    } while (choice != 9);
+}
 
-    void ReportsMenu() 
+// DISPLAY REPORTS MENU ===============================
+
+void ReportsMenu() 
+{
+    int choice;
+    do 
     {
-        int choice;
-        do 
-        {
-            printf("\n--- Reports Menu ---\n");
-            printf("1. List Reports\n");
-            printf("2. Write a new report\n");
-            printf("9. Back\n");
-            printf("Enter your choice: ");
-            scanf("%d", &choice);
+        printf("\n--- Reports Menu ---\n");
+        printf("1. List Reports\n");
+        printf("2. Write a new report\n");
+        printf("9. Back\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
 
-            // Placeholder for reports functions
-            // TODO: Implement ListReports and WriteReport
+        // Placeholder for reports functions
+        // TODO: Implement ListReports and WriteReport
 
-            switch (choice) {
-                case 9:
-                    break;
-                default:
-                    printf("Invalid choice. Please try again.\n");
-            }
-        } while (choice != 9);
-    }
+        switch (choice) {
+            case 2:
+                WriteReport();
+            case 9:
+                break;
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    } while (choice != 9);
+}
     
+// DISPLAY MAIN MENU ==========================================
 
 void DisplayMainMenu() 
 {
-        int choice;
-        do 
-        {
-            printf("\n=== Main Menu ===\n");
-            printf("1. Make a transaction\n");
-            printf("2. Inventory\n");
-            printf("3. Reports\n");
-            printf("9. Exit\n");
-            printf("Enter your choice: ");
-            scanf("%d", &choice);
+    int choice;
+    do 
+    {
+        printf("\n=== Main Menu ===\n");
+        printf("1. Make a transaction\n");
+        printf("2. Inventory\n");
+        printf("3. Reports\n");
+        printf("9. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
 
-            switch (choice) 
-            {
-                case 1:
-                    TransactionMenu();
-                    break;
-                case 2:
-                    InventoryMenu();
-                    break;
-                case 3:
-                    ReportsMenu();
-                    break;
-                case 9:
-                    printf("Exiting the program.\n");
-                    break;
-                default:
-                    printf("Invalid choice. Please try again.\n");
-            }
-        } 
-        while (choice != 9);
-    }
+        switch (choice) 
+        {
+            case 1:
+                TransactionMenu();
+                break;
+            case 2:
+                InventoryMenu();
+                break;
+            case 3:
+                ReportsMenu();
+                break;
+            case 9:
+                printf("Exiting the program.\n");
+                break;
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    } 
+    while (choice != 9);
+}
