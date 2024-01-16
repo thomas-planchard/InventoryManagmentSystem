@@ -11,7 +11,7 @@ typedef struct product
 }product_t;
 
 
-int CreateFile(char *filename, product_t *products)
+int CreateFile(char *filename, product_t products[],int length)
 {
     // Check if the file is a .txt or not
     char *ext = strrchr(filename, '.');
@@ -21,13 +21,12 @@ int CreateFile(char *filename, product_t *products)
     }
 
     FILE *file = fopen(filename, "w");
-
-    int length= sizeof(products)/sizeof(product_t);
+    
     for(int count=0;count<length;count++){
         fprintf(file,"Product n°:%s\n",products[count].id);
         fprintf(file,"Name :%s\n",products[count].name);
         fprintf(file,"Price:%d\n",products[count].quantity);
-        fprintf(file,"Product n°:%d\n",products[count].price); 
+        fprintf(file,"Product n°:%d\n\n",products[count].price); 
     }
 
 
