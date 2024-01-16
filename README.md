@@ -1,4 +1,4 @@
-# Inventory Managament System
+# Inventory Management System
 
 
 | Name | Role |
