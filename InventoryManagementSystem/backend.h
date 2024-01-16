@@ -15,7 +15,7 @@ typedef struct product
  * @param filename (char pointer): the name of the txt file.
  * @param products (product_t array): the array of products.
  * @param length (int): the length of the array.
- * @result It returns 0 if the writting is successful and 1 if it fails.
+ * @result  It returns 0 if the writting is successful and 1 if it fails.
 */
 int CreateFile(char *filename, product_t products[], int length)
 {
@@ -36,4 +36,14 @@ int CreateFile(char *filename, product_t products[], int length)
         fprintf(file, "Product n°:%d\n\n", products[count].price);
     }
     fclose(file);
+}
+
+/**
+ * This function deletes a file with every products specified in an array of products
+ * @param filename (char pointer): the name of the txt file.
+ * @result  It returns 0 if the deleting is successful and 1 if it fails.
+*/
+int DeleteFile(char *filename){
+    int result= remove(filename);
+    return result;
 }
