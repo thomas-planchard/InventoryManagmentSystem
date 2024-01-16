@@ -68,6 +68,20 @@ int SaveDatabase(const Product_t *products, int num_products) {
 Product_t products[MAX_PRODUCTS];
 int num_products;
 
+void printProduct(Product product) {
+    printf("ID : %s\n", product.id);
+    printf("Name: %s\n", product.name);
+    printf("Price: %f\n",product.price);
+    printf("Quantity: %d\n",product.quantity);
+}
+
+void printProductList(ProductList productList) {
+    for (int i = 0; i < productList.count; ++i) {
+        printf("Product %d:\n", i + 1);
+        printProduct(productList.products[i]);
+    }
+}
+
 int AddProduct() {
     char id[10];
     printf("Enter product ID: ");
