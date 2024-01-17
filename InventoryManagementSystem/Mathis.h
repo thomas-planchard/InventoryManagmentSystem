@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include <dirent.h>  
+#include <dirent.h>
 
 typedef struct
 {
@@ -19,18 +19,38 @@ typedef struct
 Product_t products[MAX_PRODUCTS];
 int num_products = 0;
 
-void printProduct(Product_t product) {
+void printProduct(Product_t product)
+{
     printf("ID : %s\n", product.id);
     printf("Name: %s\n", product.name);
-    printf("Price: %f\n",product.price);
-    printf("Quantity: %d\n",product.quantity);
+    printf("Price: %f\n", product.price);
+    printf("Quantity: %d\n", product.quantity);
 }
 
-void printProductList(Product_t products[MAX_PRODUCTS], int num_products) {
-    for (int i = 0; i < num_products; ++i) {
+void printProductList(Product_t products[MAX_PRODUCTS], int num_products)
+{
+    for (int i = 0; i < num_products; ++i)
+    {
         printf("Product %d:\n", i + 1);
         printProduct(products[i]);
     }
+}
+
+int GetInt()
+{
+    int n;
+    while (1)
+    {
+        if (scanf(" %d", &n) == 0)
+        {
+            while (getchar() != '\n')
+                ; // eat up all the _invalid_ input present in input buffer till newline
+            printf("Error:Check your input\n");
+            continue;
+        }
+        break;
+    }
+    return n;
 }
 
 /**
@@ -119,11 +139,11 @@ int AddProduct()
 
     int quantity;
     printf("Enter quantity: ");
-    scanf("%d", &quantity);
+    quantity= GetInt();
 
     double price;
     printf("Enter price: ");
-    scanf("%lf", &price);
+    scanf("%f",price);
 
     // Data validation
     if (quantity < 0 || price < 0.0)
@@ -177,7 +197,7 @@ int RemoveProduct()
 
     int remove_quantity;
     printf("Enter quantity to remove: ");
-    scanf("%d", &remove_quantity);
+    remove_quantity=GetInt();
 
     // Data validation for quantity
     if (remove_quantity <= 0)
@@ -248,7 +268,7 @@ int ModifyProduct()
     int choice;
     printf("Select attribute to modify:\n");
     printf("1. Name\n2. Quantity\n3. Price\nChoice: ");
-    scanf("%d", &choice);
+    choice=GetInt();
 
     switch (choice)
     {
@@ -259,7 +279,7 @@ int ModifyProduct()
 
     case 2: // Modify quantity
         printf("Enter new quantity: ");
-        scanf("%d", &products[index].quantity);
+        products[index].quantity=GetInt();
         if (products[index].quantity < 0)
         {
             printf("Invalid input: Negative quantity is not allowed.\n");
@@ -286,23 +306,27 @@ int ModifyProduct()
     return 0;
 }
 
-int ListReports() {
-    const char *directory = ".";  // Assuming reports are in the current directory
+int ListReports()
+{
+    const char *directory = "."; // Assuming reports are in the current directory
     DIR *dir = opendir(directory);
-    if (!dir) {
+    if (!dir)
+    {
         perror("Unable to open directory");
         return -1;
     }
     struct dirent *entry;
     printf("Available Reports:\n");
-    while ((entry = readdir(dir)) != NULL) {
+    while ((entry = readdir(dir)) != NULL)
+    {
         // Check if the file is a report (e.g., .txt extension)
-        if (strstr(entry->d_name, ".txt")) {
+        if (strstr(entry->d_name, ".txt"))
+        {
             printf("%s\n", entry->d_name);
         }
     }
     closedir(dir);
-    return 0;  // Success
+    return 0; // Success
 }
 
 // WRITE REPORT =====================================================
@@ -335,9 +359,7 @@ int WriteReport()
     return 0;
 }
 
-
-
- int SearchProduct( Product_t *products, int num_products)
+int SearchProduct(Product_t *products, int num_products)
 {
     char id[10];
     printf("Enter product ID to search: ");
@@ -367,7 +389,7 @@ int WriteReport()
     int choice;
     printf("Select attribute to modify:\n");
     printf("1. Name\n2. Quantity\n3. Price\nChoice: ");
-    scanf("%d", &choice);
+    choice=GetInt();
 
     switch (choice)
     {
@@ -378,7 +400,7 @@ int WriteReport()
 
     case 2: // Modify quantity
         printf("Enter new quantity: ");
-        scanf("%d", &products[index].quantity);
+        products[index].quantity=GetInt();
         if (products[index].quantity < 0)
         {
             printf("Invalid input: Negative quantity is not allowed.\n");
@@ -405,7 +427,6 @@ int WriteReport()
     return 0;
 }
 
-
 /**
  * This function prints the transaction menu and enable the interactions with it.
  * @result Nothing.
@@ -421,7 +442,7 @@ void TransactionMenu()
         printf("3. Modify a product\n");
         printf("9. Back\n");
         printf("Enter your choice: ");
-        scanf("%d", &choice);
+        choice=GetInt();
 
         switch (choice)
         {
@@ -455,7 +476,7 @@ void InventoryMenu()
         printf("2. Search an item\n");
         printf("9. Back\n");
         printf("Enter your choice: ");
-        scanf("%d", &choice);
+        choice=GetInt();
 
         // TODO: Implement SearchProduct
 
@@ -487,7 +508,7 @@ void ReportsMenu()
         printf("2. Write a new report\n");
         printf("9. Back\n");
         printf("Enter your choice: ");
-        scanf("%d", &choice);
+        choice=GetInt();
 
         // TODO: Implement  WriteReport
 
@@ -521,7 +542,7 @@ void DisplayMainMenu()
         printf("3. Reports\n");
         printf("9. Exit\n");
         printf("Enter your choice: ");
-        scanf("%d", &choice);
+        choice=GetInt();
 
         switch (choice)
         {
